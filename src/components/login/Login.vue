@@ -34,12 +34,19 @@ export default {
   background-size:100% 100%;
   overflow: hidden;
   height: 970px;
+  min-width: 1500px;
 }
 .login-main{
   display: inline-block;
   width: 23%;
   height: 40%;
   margin: auto auto;
+}
+.login-logo{
+  text-align: center;
+}
+.login-logo img{
+  width: 70%;
 }
 .el-input{
   width: 100%;
