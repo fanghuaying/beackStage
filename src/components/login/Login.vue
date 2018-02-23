@@ -1,27 +1,79 @@
 <template>
   <div class="login">
     <div class="login-main">
-      <div class="login-logo">
-        <img src="../../assets/logo.png">
-        <el-input  placeholder="请输入工号">
-        </el-input>
-        <el-input  placeholder="请输入密码">
-        </el-input>
-        <el-button type="info" plain>登录</el-button>
-      </div>
+      <el-form :model="ruleForm2" :rules="rule2" ref="ruleForm2">
+        <div class="login-logo">
+          <img src="../../assets/logo.png">
+        </div>
+        <el-form-item prop="account">
+          <el-input type="text" v-model="ruleForm2.account" placeholder="请输入工号"></el-input>
+        </el-form-item>
+        <el-form-item prop="checkPass">
+          <el-input type="password" v-model="ruleForm2.checkPass" placeholder="请输入密码"></el-input>
+        </el-form-item>
+        <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
+        <el-form-item>
+          <el-button type="info" @click.native.prevent="handleSubmit2" :loading="logining">登录</el-button>
+        </el-form-item>
+      </el-form>
     </div>
   </div>
 </template>
 
 <script>
+import { requestLogin } from "../../api/api.js"
 export default {
   name: 'Login',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      input21: '',
+      logining: false,
+      ruleForm2: {
+        account: "admin",
+        checkPass: "123456"
+      },
+      rule2: {
+        account: [
+          { required: true, message: "请输入工号", trigger: "blur" },
+        ],
+        checkPass: [
+          { required: true, message: "请输入密码", trigger: "blur"}
+        ]
+      },
+      checked: true
+    };
+  },
+  methods: {
+    handleSubmit2(ev){
+      var _this = this;
+      this.$refs.ruleForm2.validate((valid) => {
+        if(valid){
+          this.logining = true;
+          var loginParams = { username: this.ruleForm2.account, password:this.ruleForm2.checkPass};
+          requestLogin(loginParams).then(data => {
+            console.log(data.data)
+            this.logining = false;
+            let { msg,code,user} = data;
+            if(code !== 200) {
+              this.$message({
+                message: msg,
+                type: 'error'
+              });
+            }else{
+              sessionStorage.setItem('user',JSON.stringify(user));
+              this.$router.push({path: "/stage"})
+            }
+          });
+        }else{
+          console.log("error submit!")
+          return false;
+        }
+      })
     }
+    // goStage : function(){
+    //   this.$router.push({path:"/stage"})
+    // }
   }
+  
 }
 </script>
 
@@ -38,7 +90,7 @@ export default {
 }
 .login-main{
   display: inline-block;
-  width: 23%;
+  width: 20%;
   height: 40%;
   margin: auto auto;
 }

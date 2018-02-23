@@ -19,3 +19,17 @@ export default new Router({
     }
   ]
 })
+
+// let routers = [
+//   {
+//     path: '/',
+//     name: 'Login',
+//     component: Login
+//   },
+//   {
+//     path: '/stage',
+//     name: 'stage',
+//     component: stage
+//   }
+// ];
+// export default routers
