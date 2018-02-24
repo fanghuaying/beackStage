@@ -3,7 +3,7 @@
     <div class="login-main">
       <el-form :model="ruleForm2" :rules="rule2" ref="ruleForm2">
         <div class="login-logo">
-          <img src="../../assets/logo.png">
+          <img src="../src/assets/logo.png">
         </div>
         <el-form-item prop="account">
           <el-input type="text" v-model="ruleForm2.account" placeholder="请输入工号"></el-input>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { requestLogin } from "../../api/api.js"
+import { requestLogin } from "../src/api/api.js"
 export default {
   name: 'Login',
   data () {
@@ -60,7 +60,7 @@ export default {
               });
             }else{
               sessionStorage.setItem('user',JSON.stringify(user));
-              this.$router.push({path: "/stage"})
+              this.$router.push({path: "/Home"})
             }
           });
         }else{
@@ -82,7 +82,7 @@ export default {
 .login{
   display: flex;
   align-items: center;
-  background: url('../../assets/logo-background.png') no-repeat;
+  background: url('../src/assets/logo-background.png') no-repeat;
   background-size:100% 100%;
   overflow: hidden;
   height: 970px;
