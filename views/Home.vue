@@ -54,12 +54,29 @@
 				</ul>
 			</aside> 
 			<!-- 主要内容 -->
-			<section>
+			<!-- <section>
 				<el-col :span="24">
 					<transition name="fade" mode="out-in">
 						<router-view></router-view>
 					</transition>
 				</el-col>
+			</section> -->
+			<section class="content-container">
+				<div class="grid-content bg-purple-light">
+					<el-col :span="24" class="breadcrumb-container">
+						<strong class="title">{{$route.name}}</strong>
+						<el-breadcrumb separator="/" class="breadcrumb-inner">
+							<el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
+								{{ item.name }}
+							</el-breadcrumb-item>
+						</el-breadcrumb>
+					</el-col>
+					<el-col :span="24" class="content-wrapper">
+						<transition name="fade" mode="out-in">
+							<router-view></router-view>
+						</transition>
+					</el-col>
+				</div>
 			</section>
 		</el-col>
 	</el-row>
@@ -182,6 +199,28 @@ export default {
 }
 .el-submenu .el-menu {
     background-color: rgba(204, 204, 153, 0.5);
+}
+/* 主体内容 */
+.container .main .content-container {
+    flex: 1;
+    overflow-y: scroll;
+    padding: 20px;
+}
+.container .main .content-container .breadcrumb-container .title{
+    width: 200px;
+    float: left;
+    color: #475669;
+}
+.container .main .content-container .breadcrumb-container .breadcrumb-inner{
+    float: right;
+}
+.el-breadcrumb {
+    font-size: 13px;
+    line-height: 1;
+}
+.el-breadcrumb__item:last-child .el-breadcrumb__item__inner{
+    color: #97a8be;
+    cursor: text;
 }
 </style>
 

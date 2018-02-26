@@ -60,7 +60,7 @@ export default {
               });
             }else{
               sessionStorage.setItem('user',JSON.stringify(user));
-              this.$router.push({path: "/Home"})
+              this.$router.push({path: "/Banner"})
             }
           });
         }else{
