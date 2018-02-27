@@ -221,6 +221,12 @@ export default {
 .el-breadcrumb__item:last-child .el-breadcrumb__item__inner{
     color: #97a8be;
     cursor: text;
+}	
+section{
+	padding: 40px;
+}
+.fa{
+	margin-right: 10px;
 }
 </style>
 

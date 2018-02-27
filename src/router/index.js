@@ -18,7 +18,7 @@ import Relation from '../../views/nav4/Relation'
 
 let routes = [
   {
-    path: '/Login',
+    path: '/',
     name: 'Login',
     component: Login,
     hidden: true
@@ -33,7 +33,7 @@ let routes = [
     path: '/',
     component: Home,
     name: '首页',
-    iconCls: 'el-icon-location',
+    iconCls: 'fa fa-home',
     children: [
       { path: '/main', component: Main, name:'主页', hidden: true },
       { path: '/banner', component: Banner, name: 'banner图'},
@@ -44,7 +44,7 @@ let routes = [
     path: '/',
     component: Home,
     name: '印象',
-    iconCls: 'el-icon-menu',
+    iconCls: 'fa fa-binoculars',
     children: [
       { path: '/all', component: All, name: '全部'},
       { path: '/company', component: Company, name: '公司'},
@@ -57,7 +57,7 @@ let routes = [
     path: '/',
     component: Home,
     name: '',
-    iconCls: 'fa fa-address-card',
+    iconCls: 'fa fa-handshake-o',
     leaf: true,//只有一个节点
     children: [
         { path: '/join', component: Join, name: '招聘' }
@@ -67,7 +67,7 @@ let routes = [
     path: '/',
     component: Home,
     name: '',
-    iconCls: 'fa fa-address-card',
+    iconCls: 'el-icon-phone-outline',
     leaf: true,//只有一个节点
     children: [
         { path: '/relation', component: Relation, name: '联系' }

@@ -1,40 +1,51 @@
 <template>
-  <section>
-      <el-upload
-        action="https://jsonplaceholder.typicode.com/posts/"
-        list-type="picture-card"
-        :on-preview="handlePictureCardPreview"
-        :on-remove="handleRemove"
-        :file-list="fileList2">
-        <i class="el-icon-plus"></i>
-      </el-upload>
-      <el-dialog :visible.sync="dialogVisible">
-        <img width="100%" :src="dialogImageUrl" alt="">
-      </el-dialog>
-  </section>
+    <el-upload
+            class="upload-demo"
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :file-list="fileList2"
+            list-type="picture">
+			<el-button size="medium" icon="el-icon-plus" type="info">点击上传</el-button>
+			<div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+	</el-upload>
+           
 </template>
 
-<script>
-  export default {
-    data() {
-      return {
-        dialogImageUrl: ["http://www.shbaoyuantech.com/img/icon-01.png"],
-        dialogVisible: false,
-        fileList2: [{name: 'banner04.jpeg', url: 'http://www.shbaoyuantech.com/img/icon-01.png'},
-					{name: 'banner01.jpeg', url: 'http://www.shbaoyuantech.com/img/icon-02.png'},
-					{name: 'banner02.jpeg', url: 'http://www.shbaoyuantech.com/img/icon-03.png'},
-					{name: 'banner02.jpeg', url: 'http://www.shbaoyuantech.com/img/icon-04.png'},
+ <script>
+	export default {
+	data() {
+		return {
+		fileList2: [{name: '视觉设计', url: 'http://www.shbaoyuantech.com/img/icon-01.png'},
+		            {name: '移动开发', url: 'http://www.shbaoyuantech.com/img/icon-02.png'},
+	            	{name: '网站优化', url: 'http://www.shbaoyuantech.com/img/icon-03.png'},
+	            	{name: '系统开发', url: 'http://www.shbaoyuantech.com/img/icon-04.png'},
 				]
-      };
-    },
-    methods: {
-      handleRemove(file, fileList) {
-        console.log(file, fileList);
-      },
-      handlePictureCardPreview(file) {
-        this.dialogImageUrl = file.url;
-        this.dialogVisible = true;
-      }
-    }
-  }
+		};
+	},
+	methods: {
+		handleRemove(file, fileList) {
+			console.log(file, fileList);
+			},
+		handlePreview(file) {
+			console.log(file);
+			}
+		}
+	}
 </script>
+
+<style scoped>
+.upload-demo{
+	padding: 40px;
+}
+.el-upload{
+	float: right;
+	margin-bottom: 20px;
+}
+.el-upload-list{
+	margin-top: 20px;
+}
+.el-upload-list--picture .el-upload-list__item{
+	height: 320px;
+}
+</style>
