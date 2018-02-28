@@ -11,6 +11,7 @@ import Company from '../../views/nav2/Company'
 import Group from '../../views/nav2/Group'
 import Industry from '../../views/nav2/Industry'
 import Skill from '../../views/nav2/Skill'
+import Module from '../../views/nav2/Module'
 import Join from '../../views/nav3/Join'
 import Relation from '../../views/nav4/Relation'
 
@@ -18,7 +19,7 @@ import Relation from '../../views/nav4/Relation'
 
 let routes = [
   {
-    path: '/',
+    path: '/login',
     name: 'Login',
     component: Login,
     hidden: true
@@ -46,6 +47,7 @@ let routes = [
     name: '印象',
     iconCls: 'fa fa-binoculars',
     children: [
+      { path: '/module', component: Module, name: '模块'},
       { path: '/all', component: All, name: '全部'},
       { path: '/company', component: Company, name: '公司'},
       { path: '/group', component: Group, name: '集团'},
@@ -74,7 +76,6 @@ let routes = [
     ]
   }
 ];
-
 
 
 export default routes;

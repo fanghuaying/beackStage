@@ -1,17 +1,19 @@
 <template>
-  <section>
+  <section class="banner">
       <el-upload
-        action="https://jsonplaceholder.typicode.com/posts/"
+        action="https://jsonplaceholder.typicode.com/posts/"         
         list-type="picture-card"
         :on-preview="handlePictureCardPreview"
         :on-remove="handleRemove"
-        :file-list="fileList2">
+        :file-list="fileList2"> 
+        <!-- action   添加的是后台接口 -->
         <i class="el-icon-plus"></i>
       </el-upload>
       <el-dialog :visible.sync="dialogVisible">
         <img width="100%" :src="dialogImageUrl" alt="">
       </el-dialog>
   </section>
+  
 </template>
 
 <script>
@@ -40,11 +42,19 @@
 
 
 <style>
-.el-upload-list--picture-card .el-upload-list__item{
-  text-align: center;
+.banner .el-upload-list__item,.el-upload--picture-card {
+	width: 500px;
+  	height: 225px;
 }
-.el-upload-list--picture-card .el-upload-list__item-thumbnail{
-  width: 90%;
+.el-upload--picture-card {
+    background-color: #fbfdff;
+    border: 1px dashed #c0ccda;
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 148px;
+    height: 148px;
+    line-height: 146px;
+    vertical-align: top;
 }
 </style>
 
