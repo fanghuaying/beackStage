@@ -104,12 +104,27 @@ export default {
 		handleSelect(key, keyPath) {
 			console.log(key, keyPath);
 		},
+		// 折叠导航栏
 		collapse:function(){
 			this.collapsed=!this.collapsed;
 			var uiwidth = document.getElementById('lastclass');
 			if(uiwidth.offsetWidth === 0){
 				uiwidth.style.width = '230px';
 			}
+		},
+		//退出登录
+		logout: function () {
+			var _this = this;
+			this.$confirm('确认退出吗?', '提示', {
+				//type: 'warning'
+			}).then(() => {
+				sessionStorage.removeItem('user');
+				_this.$router.push('/login');
+			}).catch(() => {
+
+			});
+
+
 		},
 		showMenu(i,status){
 			this.$refs.menuCollapsed.getElementsByClassName('submenu-hook-'+i)[0].style.display=status?'block':'none';
