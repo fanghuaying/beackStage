@@ -5,8 +5,10 @@
 			<textarea  class="add-descript" v-model="text"></textarea>
 			<i class="el-icon-circle-close"></i>
 		</div>
-		<div class="el-upload el-upload--picture-card">
-			<i class="el-icon-plus"></i>
+		<div class="product-add">
+			<div class="el-upload el-upload--picture-card">
+				<i class="el-icon-plus"></i>
+			</div>
 		</div>
 		<el-row :gutter="20">
             <el-col :span="6">
@@ -53,7 +55,7 @@
 					<span>细称：</span>
 					<el-input v-model="inputDetil"></el-input>
 				</p>
-                <p>
+                <p class="product-icon">
 					<span>图标：</span>
 					<el-upload
 					action="https://jsonplaceholder.typicode.com/posts/"
@@ -77,7 +79,7 @@
 	data() {
       return {
 		 	text: '目前，公司在基于教育培训行业的移动端APP开发，智能工作平台、数据分析系统建设等方面均取得了长足的进展，并不断探索文化电商、内容电商、人文教育数字化等前沿领域。公司将连接线上线下的学习交流空间，搭建高效的互联网学习平台及企业信息化管理体系视为己任，未来亦将突破现有领域，努力推动先进的互联网交互技术和信息管理技术的实践运用。',
-			fileList:[{name: 'qinhan.jpeg', url: 'http://www.shbaoyuantech.com/img/join-icon-001.png'}],
+			fileList:[{name: 'qinhan.jpeg', url: 'http://www.shbaoyuantech.com/img/icon-01.png'}],
 			dialogVisible: false,
 			dialogImageUrl: '',
 			inputName:'视觉设计',
@@ -118,7 +120,7 @@
 	margin-top:10px;
 	margin-bottom: 10px; 
 }
-.product .el-upload--picture-card {
+.product .product-add .el-upload--picture-card {
     overflow: hidden;
     background-color: #fbfdff;
     border: 1px dashed #c0ccda;
@@ -129,6 +131,7 @@
     height: 52px;
     line-height: 52px;
     vertical-align: top;
+	cursor: pointer;
 }
 .product .product-text{
 	position: relative;
@@ -147,6 +150,10 @@
     border-radius: 6px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     cursor: pointer;
+}
+.product .el-dialog .el-upload{
+	float: none;
+	margin-top: 0px;
 }
 .product .product-img{
     margin: 20px 0px;
@@ -176,10 +183,10 @@
 .dtitle p {
     margin: 20px 0px 20px 20px;
 }
-.join .el-upload-list--picture-card .el-upload-list__item{
+.product .el-upload-list--picture-card .el-upload-list__item{
     border-radius: 50%;
 }
-.join .el-upload--picture-card{
+.product .el-upload--picture-card{
     border-radius: 50%;
 }
 </style>
