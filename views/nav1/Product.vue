@@ -2,11 +2,13 @@
 	<section class="product">
 		<p>产品介绍内容：</p>
 		<div class="product-text">
-			<textarea  class="add-descript" v-model="text"></textarea>
-			<i class="el-icon-circle-close"></i>
+			<div v-for="(form,index) in text" :key="index">
+				<textarea  class="add-descript" v-model="text"></textarea>
+			</div>
+			<i class="el-icon-circle-close" @click="hiddenI"></i>
 		</div>
 		<div class="product-add">
-			<div class="el-upload el-upload--picture-card">
+			<div class="el-upload el-upload--picture-card" @click="addText()">
 				<i class="el-icon-plus"></i>
 			</div>
 		</div>
@@ -78,7 +80,7 @@
 	export default {
 	data() {
       return {
-		 	text: '目前，公司在基于教育培训行业的移动端APP开发，智能工作平台、数据分析系统建设等方面均取得了长足的进展，并不断探索文化电商、内容电商、人文教育数字化等前沿领域。公司将连接线上线下的学习交流空间，搭建高效的互联网学习平台及企业信息化管理体系视为己任，未来亦将突破现有领域，努力推动先进的互联网交互技术和信息管理技术的实践运用。',
+		 	text: ['目前，公司在基于教育培训行业的移动端APP开发，智能工作平台、数据分析系统建设等方面均取得了长足的进展，并不断探索文化电商、内容电商、人文教育数字化等前沿领域。公司将连接线上线下的学习交流空间，搭建高效的互联网学习平台及企业信息化管理体系视为己任，未来亦将突破现有领域，努力推动先进的互联网交互技术和信息管理技术的实践运用。'],
 			fileList:[{name: 'qinhan.jpeg', url: 'http://www.shbaoyuantech.com/img/icon-01.png'}],
 			dialogVisible: false,
 			dialogImageUrl: '',
@@ -100,7 +102,15 @@
       handlePictureCardPreview(file) {
         this.dialogImageUrl = file.url;
         this.dialogVisible = true;
-      }
+	  },
+	  addText(){
+		  var obj = this.text;
+		  this.text.push(obj);
+		  console.log(obj);
+	  },
+	  hiddenI(){
+		  console.log("点击消失")
+	  }
     }
 }
 </script>
@@ -120,6 +130,10 @@
 	margin-top:10px;
 	margin-bottom: 10px; 
 }
+.product .product-add{
+	cursor: pointer;
+	height: 80px;
+}
 .product .product-add .el-upload--picture-card {
     overflow: hidden;
     background-color: #fbfdff;
@@ -131,7 +145,6 @@
     height: 52px;
     line-height: 52px;
     vertical-align: top;
-	cursor: pointer;
 }
 .product .product-text{
 	position: relative;
@@ -141,6 +154,7 @@
 	font-size: 20px;
     right: 0px;
     top: 0px;
+	cursor: pointer;
 }
 .product .product-part {
     width: 80%;

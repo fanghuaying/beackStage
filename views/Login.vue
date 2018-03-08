@@ -50,7 +50,7 @@ export default {
           this.logining = true;
           var loginParams = { username: this.ruleForm2.account, password:this.ruleForm2.checkPass};
           requestLogin(loginParams).then(data => {
-            console.log(data.data)
+            // console.log(data.data)
             this.logining = false;
             let { msg,code,user} = data;
             if(code !== 200) {
